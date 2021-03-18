@@ -6,9 +6,7 @@ echo "Is it  $world_url, is that the world URL? CLTR+C to quit if it is not. Ent
 read
 echo "Okay then, proceed"
 cd /home/$USER/.minecraft-pi/games/com.mojang/minecraftWorlds/
-wget $world_url
-echo "What is the world's file name?"
-read world_name
-unzip $world_name.mcpiw
-rm $world_name.mcpiw
+wget $world_url -O world.mcpiw
+unzip world.mcpiw
+rm world.mcpiw
 echo "Done!"
