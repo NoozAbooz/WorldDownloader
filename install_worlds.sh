@@ -4,19 +4,19 @@ while getopts f:u:U: option
 do
 case "${option}"
 in
-f) FIX=${OPTARG};;
-u) USER_INPUT=${OPTARG};;
-U) FILE_URL=${OPTARG};;
+f | -fix) FIX=1;;
+u | -user-input) USER_INPUT=1;;
+U | -file-url) FILE_URL=${OPTARG};;
 esac
 done
 
 if [ $USER_INPUT ]; then
 echo "Enter the world URL"
-read world_url
+read FILE_URL
 fi
 echo "Proceeding then."
 cd /home/$USER/.minecraft-pi/games/com.mojang/minecraftWorlds/
-wget $FILE_URL -O world.mcpiw
-unzip world.mcpiw
+wget $FILE_URL -O world.mcpiw  || exit u
+unzip world.mcpiw || echo "unzip is not instaled."; exit 1
 rm world.mcpiw
 echo "Done!"
