@@ -1,3 +1,5 @@
+echo "World Downloader By LEHATUPOINTOW! You need unzip for that. sudo apt install unzip"
+
 while getopts f:u:U: option
 do
 case "${option}"
@@ -10,7 +12,7 @@ done
 
 $FILE_URL = $1
 
-cd /opt/minecraft-pi/games/com.mojang/minecraftWorlds/
+cd /home/$USER/.minecraft-pi/games/com.mojang/minecraftWorlds/
 wget $FILE_URL -O world.mcpiw  || exit u
 unzip world.mcpiw || echo "unzip is not instaled."; exit 1
 rm world.mcpiw
